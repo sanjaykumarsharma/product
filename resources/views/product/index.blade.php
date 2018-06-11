@@ -28,8 +28,10 @@
                     <td><img src="{{asset('images/'.$p->image)}}" class="img-responsive" style="max-width:25px"></td>
                     <td>{{ $p->product_name }}</td>
                     <td class="text-right">
+                        <a href="{{ route('product.show', [$p->id]) }}" class="btn btn-sm btn-default">Show</a> 
 
                         <a href="{{ route('product.edit', [$p->id]) }}" class="btn btn-sm btn-default">Edit</a>
+
                         <a href="#" class="btn btn-sm btn-danger"
                             onclick="
                             var result = confirm('Are you sure you wish to delete this Product?');

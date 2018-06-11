@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Product;
 use App\Category;
 
@@ -76,7 +77,16 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        //
+        
+        $product = Product::find($id);
+
+        //$products = Product::where('category_id', $product->category_id);
+        
+        //$products = DB::table('products')->where('category_id', $product->category_id)->get();
+
+        $products = Category::find($product->category_id)->products->where('id', '<>', $id);
+        
+        return view('product.show', ['product'=>$product, 'products'=>$products]);
     }
 
     /**
